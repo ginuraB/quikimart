@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'cart_screen.dart'; // Import Cart Screen
 import 'product_details_screen.dart'; // Import Product Details Screen
+import 'cart_state.dart'; // Import globalCart
 
 class ProductListScreen extends StatelessWidget {
   final String categoryName;
@@ -53,7 +54,7 @@ class ProductListScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CartScreen(cartItems: []), // Pass cartItems if needed
+                      builder: (context) => CartScreen(), // Pass globalCart directly
                     ),
                   );
                 },
@@ -79,15 +80,9 @@ class ProductListScreen extends StatelessWidget {
             child: Card(
               margin: EdgeInsets.all(10),
               child: ListTile(
-                leading: Image.asset(
-                  productImages[products[index]]!,
-                  height: 50,
-                  width: 50,
-                  fit: BoxFit.cover,
-                ),
+                leading: Image.asset(productImages[products[index]] ?? 'assets/images/default.png'),
                 title: Text(products[index]),
-                subtitle: Text('Description of ${products[index]}'),
-                trailing: Text('\$${(index + 1) * 5}'), // Example price
+                subtitle: Text('Price: \$${(index + 1) * 5}'),
               ),
             ),
           );
@@ -96,4 +91,3 @@ class ProductListScreen extends StatelessWidget {
     );
   }
 }
-

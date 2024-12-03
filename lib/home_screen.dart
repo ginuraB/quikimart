@@ -12,11 +12,11 @@ class HomeScreen extends StatelessWidget {
   };
 
   final Map<String, String> categoryImages = {
-    'Diary Products': 'assets/images/categories/diary.jpg',
+    'Diary Products': 'assets/images/categories/diary.png',
     'Vegetables': 'assets/images/categories/vegi.png',
-    'Bakery Items': 'assets/images/categories/bakery.jpeg',
-    'Meat Items': 'assets/images/categories/meat.jpg',
-    'Pantry & Staples': 'assets/images/categories/pantry&staple.jpg',
+    'Bakery Items': 'assets/images/categories/bakery.png',
+    'Meat Items': 'assets/images/categories/meat.png',
+    'Pantry & Staples': 'assets/images/categories/pantry&staple.png',
     'Beverages': 'assets/images/categories/beverages.png',
   };
 

@@ -1,4 +1,4 @@
 import 'cart_item.dart';
 
-// Shared cart list
+// Shared cart list across screens
 List<CartItem> globalCart = [];
