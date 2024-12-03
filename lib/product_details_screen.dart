@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'cartscreen.dart';
+import 'cart_screen.dart';
+import 'cart_item.dart'; // Import your CartItem model (if you haven't already)
 
 class ProductDetailsScreen extends StatelessWidget {
   final int productId; // To receive product ID
@@ -9,6 +10,9 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Example cartItems list for this screen
+    List<CartItem> cartItems = [];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Product Details'),
@@ -34,10 +38,15 @@ class ProductDetailsScreen extends StatelessWidget {
             Spacer(),
             ElevatedButton(
               onPressed: () {
-                // Navigate to Cart Screen when "Add to Cart" is pressed
+                // Add the product to the cart (example)
+                cartItems.add(CartItem(name: 'Product ${productId + 1}', price: (productId + 1) * 5, quantity: 1));
+
+                // Navigate to Cart Screen and pass cartItems
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CartScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => CartScreen(cartItems: cartItems), // Pass cartItems here
+                  ),
                 );
               },
               child: Text('Add to Cart'),

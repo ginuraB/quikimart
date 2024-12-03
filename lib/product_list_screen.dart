@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'cart_screen.dart'; // Import Cart Screen
 import 'product_details_screen.dart'; // Import Product Details Screen
 
 class ProductListScreen extends StatelessWidget {
@@ -13,27 +14,22 @@ class ProductListScreen extends StatelessWidget {
     'Cheese': 'assets/images/products/cheese.jpg',
     'Butter': 'assets/images/products/butter.jpg',
     'Yogurt': 'assets/images/products/yoguret.jpg',
-
     'Carrot': 'assets/images/products/carrot.jpg',
     'Broccoli': 'assets/images/products/broccoli.jpg',
     'Spinach': 'assets/images/products/spinach.jpg',
     'Cabbage': 'assets/images/products/cabbage.png',
-
     'Bread': 'assets/images/products/bread.jpg',
     'Croissants': 'assets/images/products/croissants.jpg',
     'Muffins': 'assets/images/products/muffins.jpg',
     'Bagels': 'assets/images/products/bagels.jpg',
-
     'Chicken': 'assets/images/products/chicken.jpg',
     'Pork': 'assets/images/products/pork.jpg',
     'Beef': 'assets/images/products/beef.jpg',
     'Lamb': 'assets/images/products/lamb.jpg',
-
     'Rice': 'assets/images/products/rice.jpg',
     'Pasta': 'assets/images/products/pasta.jpg',
     'Flour': 'assets/images/products/flour.jpeg',
     'Sugar': 'assets/images/products/sugar.jpg',
-
     'Juice': 'assets/images/products/juice.jpg',
     'Soda': 'assets/images/products/soda.jpeg',
     'Coffee': 'assets/images/products/coffe.jpeg',
@@ -45,6 +41,27 @@ class ProductListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('$categoryName'),
+        actions: [
+          // Cart icon with proper scaling and alignment
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  // Navigate to Cart screen when icon is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CartScreen(cartItems: []), // Pass cartItems if needed
+                    ),
+                  );
+                },
+                iconSize: 30,  // Adjust icon size as needed
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: products.length, // Show products of the selected category
@@ -79,3 +96,4 @@ class ProductListScreen extends StatelessWidget {
     );
   }
 }
+

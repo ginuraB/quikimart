@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'cart_item.dart';
+import 'cart_item.dart'; // Import Cart Item Model
 
 class CartScreen extends StatelessWidget {
-  // Sample cart data, in a real app, this would come from a state management solution or database.
-  final List<CartItem> cartItems = [
-    CartItem(name: 'Apple', price: 1.5, quantity: 2),
-    CartItem(name: 'Banana', price: 0.8, quantity: 3),
-    CartItem(name: 'Milk', price: 2.0, quantity: 1),
-  ];
+  final List<CartItem> cartItems;
+
+  CartScreen({required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
     double totalPrice = cartItems.fold(0.0, (sum, item) => sum + item.totalPrice);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Your Cart'),
-      ),
+      appBar: AppBar(title: Text('Your Cart')),
       body: Column(
         children: [
           Expanded(
