@@ -8,6 +8,28 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  // Method to show success or failure screen
+  void _showCheckoutResult(bool isSuccess) {
+    final resultMessage = isSuccess ? 'Checkout Successful!' : 'Checkout Failed!';
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(isSuccess ? 'Success' : 'Error'),
+          content: Text(resultMessage),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double totalPrice = globalCart.fold(0.0, (sum, item) => sum + item.totalPrice);
@@ -65,8 +87,10 @@ class _CartScreenState extends State<CartScreen> {
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: () {
-                // Implement checkout or payment process here
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Proceeding to Checkout')));
+                // Simulate checkout process with a success or failure outcome
+                final isSuccess = totalPrice > 0; // Example logic
+                _showCheckoutResult(isSuccess);
+                // In a real app, replace the above logic with actual checkout logic
               },
               child: Text('Proceed to Checkout'),
             ),
