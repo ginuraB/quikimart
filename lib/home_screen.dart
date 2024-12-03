@@ -11,6 +11,15 @@ class HomeScreen extends StatelessWidget {
     'Beverages': ['Juice', 'Soda', 'Coffee', 'Tea'],
   };
 
+  final Map<String, String> categoryImages = {
+    'Diary Products': 'assets/images/categories/diary.jpg',
+    'Vegetables': 'assets/images/categories/vegi.png',
+    'Bakery Items': 'assets/images/categories/bakery.jpeg',
+    'Meat Items': 'assets/images/categories/meat.jpg',
+    'Pantry & Staples': 'assets/images/categories/pantry&staple.jpg',
+    'Beverages': 'assets/images/categories/beverages.png',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +62,21 @@ class HomeScreen extends StatelessWidget {
                   },
                   child: Card(
                     elevation: 2,
-                    child: Center(
-                      child: Text(categoryName),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          categoryImages[categoryName]!,
+                          height: 80,
+                          width: 80,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          categoryName,
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                   ),
                 );
